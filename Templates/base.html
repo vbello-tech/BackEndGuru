@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'styling/style.css' %}" rel="stylesheet">
+    <title>{% block title %} {% endblock title %}</title>
+    <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
+
+
+    <meta content="BACNDGURU is a webapp that helps backend developers hone their skills and become better. The
+        website contains challenges that they can participate in to help them become better at backend engineering." name="description">
+    <meta content="" name="keywords">
+</head>
+
+<body>
+ <div class="flex flex-col min-h-screen">
+<!------------- nav  ----------->
+
+
+        <header class="px-4 lg:px-6 h-14 flex items-center">
+            <Link class="flex items-center justify-center" href="#">
+              <span class="font-semibold text-lg text-black hidden md:inline">BackEndGuru</span>
+            </Link>
+            <nav class="ml-auto flex gap-4 sm:gap-6">
+              <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="{% url 'user:home' %}">
+                Home
+              </a>
+              <!--a class="text-sm text-black font-medium hover:underline underline-offset-4" href="#">
+                LeaderBoard
+              </a-->
+              <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="{% url 'challenge:list' %}">
+                Challenges
+              </a>
+                {% if user.is_authenticated %}
+             <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="#">
+                Your Tasks
+              </a>
+                {% else %}
+              <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="{% url 'user:login' %}">
+                Login
+              </a>
+                {% endif %}
+            </nav>
+          </header>
+
+    {% if messages %}
+        {% for message in messages %}
+
+            <div>
+                <div>{{ message }}</div>
+                <div>
+                    <button class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg><span class="sr-only">Dismiss</span></button>
+                </div>
+            </div>
+
+        {% endfor %}
+    {% endif %}
+
+  {% block body %}
+
+  {% endblock body %}
+
+
+
+<!------------- footer section  ----------->
+
+<div>
+    <div class="canvas-paper ">
+      <div class="bg-white w-full pt-16 pr-4 pb-16 pl-4 md:px-24 lg:px-8 text-black">
+        <div class="mr-auto ml-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 text-black bg-white">
+          <div class="mt-0 mr-0 mb-8 ml-0 lg:grid-cols-6 grid row-gap-10">
+            <div class="lg:col-span-4 md:grid-cols-4 grid grid-cols-2 gap-5 row-gap-8">
+              <div>
+                <p fontfamily="Raleway" class="tracking-wide text-black text-medium">Challenge Difficulty</p>
+                <div class="mt-2 mr-0 mb-0 ml-0 space-y-2">
+                  <div>
+                    <p class="text-gray-500 transition-colors duration-300
+                        hover:text-deep-purple-accent-200">Junior</p>
+                  </div>
+                  <div>
+                    <p class="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-200">Intermediaate</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="md:max-w-md lg:col-span-2">
+              <p class="tracking-wide text-black font-medium text-base">Subscribe for updates</p>
+              <div displaydirection="col" class="md:flex-row mt-4 mr-0 mb-0 ml-0 flex">
+                <input type="text" placeholder="Email" class="border-gray-300 border flex-grow transition duration-200
+                    rounded appearance-none focus:border-deep-purple-accent-400 focus:outline-none focus:shadow-outline
+                    w-full h-12 pt-0 pr-4 pb-0 pl-4 mt-0 mr-0 mb-4 ml-0 bg-white shadow-sm md:mr-2 md:mb-0"/>
+                <button fontfamily="Arial" type="submit" class="inline-flex rounded transition duration-200
+                    hover:bg-deep-blue-900 focus:shadow-outline focus:outline-none items-center justify-center h-12 pt-0
+                    pr-6 pb-0 pl-6 mt-0 mr-0 mb-4 ml-2 font-medium text-white bg-black tracking-wide
+                    shadow-md">Subscribe</button>
+              </div>
+              <p class="mt-4 mr-0 mb-0 ml-0 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
+                  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimh.</p>
+            </div>
+          </div>
+          <div class="justify-between pt-5 pr-0 pb-10 pl-0 sm:flex-row flex flex-col border-t border-gray-800">
+            <p class="text-sm text-gray-500">© Copyright 2021 Lorem Inc. All rights reserved.</p>
+            <div class="items-center mt-4 sm:mt-0 flex space-x-4">
+              <div class="h-5 text-gray-500 fa-twitter fab transition-colors duration-300
+                  hover:text-teal-accent-400"></div>
+              <div class="h-5 text-gray-500 fa-facebook fab transition-colors duration-300
+                  hover:text-teal-accent-400"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </div>
+
+
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,20 @@
+# created by virtualenv automatically
+
+venv/
+.env
+warning.log
+db.sqlite3
+./__pycache__/
+Core/__pycache__/
+Core/settings/__pycache__/
+Users/__pycache__/
+Users/migrations/__pycache__/
+.idea/
+staticfiles/
+.DS_Store
+Templates/.DS_Store
+Templates/account/.DS_Store
+Challenges/migrations/__pycache__/
+Challenges/__pycache__/
+media/
+

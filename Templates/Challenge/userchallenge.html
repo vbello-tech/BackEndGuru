@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %} PROFILE {% endblock %}
+
+{% block body %}
+
+<div class="container">
+  <div class="profile">
+
+{% if not profile.user %}
+  <h2>You dont have any task(s) yet.<a href="#">Tasks</a> </h2>
+{% else %}
+
+<div class="products">
+    <div class="container">
+        <div class="col-md-12">
+            <div class="filters-content">
+                <div class="row grid">
+                    {% for challenge in challenges %}
+                        <div class="col-lg-4 col-md-4 all">
+                            <div class="product-item">
+                                {% if item.image %}<a href="{{ item.get_detail }}"><img src="{{ item.image.url }}" alt=""></a>{% endif %}
+                                <div class="down-content">
+                                    <a href="{{ item.get_detail }}"><h4 style="font-weight: bolder;">{{ item.title }}</h4></a>
+                                    <p>{{ item.description }}</p>
+                                    <span>{{ item.difficulty }}</span>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+{% endif %}
+
+</div>
+</div>
+
+{% endblock %}
+

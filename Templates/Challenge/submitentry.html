@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %} Submission for {{ entry.challenge.title }} {% endblock %}
+
+{% block body %}
+
+<div class="center-div">
+     <div class="container" >
+                <form method="post" class="form-control">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <button type="submit">SUBMIT ...</button>
+                </form>
+     </div>
+</div>
+
+{% endblock %}
