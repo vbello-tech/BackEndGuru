@@ -5,7 +5,7 @@ charset-normalizer==3.3.2
 crispy-bootstrap4==2023.1
 cryptography==41.0.7
 dj-database-url==2.1.0
-Django==5.0.3
+Django==4.2.11
 django-anymail==10.2
 django-cors-headers==4.3.1
 django-crispy-bootstrap==0.1.1.1
