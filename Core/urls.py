@@ -22,3 +22,6 @@ urlpatterns = [
     path('', include('Users.urls', namespace="user")),
     path('challenge/', include("Challenges.urls", namespace="challenge")),
 ]
+
+handler404 = 'Users.views.handler404'
+handler500 = 'Users.views.handler500'
