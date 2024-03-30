@@ -47,6 +47,7 @@ class ChallengeEntry(models.Model):
     schema_image = models.ImageField(upload_to="Challenge/", blank=True, null=True)
     language = models.CharField(max_length=150, blank=True, null=True)
     framework = models.CharField(max_length=150, blank=True, null=True)
+    database = models.CharField(max_length=150, blank=True, null=True)
     github = models.URLField(blank=True, null=True)
     project = models.URLField(blank=True, null=True)
     slug = models.SlugField(unique=True, blank=True)

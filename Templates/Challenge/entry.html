@@ -15,14 +15,27 @@
                 </div>
             </div>
 
+            {% if entry.completed %}
+
             <div class="grid gap-2">
                 <h3 class="text-lg font-bold">Submission Details</h3>
-                {% if entry.completed %}
                     {% if entry.description %}
                     <p class="text-base text-gray-500 dark:text-gray-400">
                       {{ entry.description }}
                     </p>
                     {% endif %}
+            </div>
+
+             <div class="grid gap-2">
+                <h3 class="text-lg font-bold">Stack</h3>
+                <div class="grid gap-2 text-sm text-gray-500 dark:text-gray-400">
+                    <p>Language: {{ entry.language }}</p>
+                    <p>Framework: {{ entry.framework }}</p>
+                    <p>Database: {{ entry.database }}</p>
+                </div>
+            </div>
+
+            <div class="grid gap-2">
                 <div class="flex flex-col gap-1 min-[400px]:flex-row">
                     <a href="{{ entry.github }}" class="inline-flex items-center justify-center whitespace-nowrap no-underline text-sm font-medium text-gray-500 ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-9 rounded-md px-3 w-full min-w-[200px]">
                         Code
@@ -36,8 +49,11 @@
                 {% else %}
                 <p>You have not submitted your entry for this challenge.</p>
                 <a href="{{ entry.submit_entry }}">Submit Entry</a>
-            {% endif %}
             </div>
+
+            </div>
+
+            {% endif %}
 
         </div>
     </div>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Challenge, ChallengeEntry
-from django.views.generic import CreateView, DetailView, View, ListView
+from django.views.generic import CreateView, View, ListView
 from django.urls import reverse
 from .forms import CreateChallengeForm, SubmitEntryForm
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -48,9 +48,10 @@ class ChallengeDetailView(View):
 
 def create_entry(request):
     task = get_object_or_404(Challenge, id=request.POST.get('challenge_id'))
-    if ChallengeEntry.objects.get(participant=request.user, challenge=task).exist():
-        return redirect(entry.get_entry())
-    else:
+    try:
+        ChallengeEntry.objects.get(participant=request.user, challenge=task)
+        return HttpResponse("You have an entry for this challenge")
+    except ObjectDoesNotExist:
         entry = ChallengeEntry.objects.create(
             participant=request.user, challenge=task
         )
@@ -66,7 +67,7 @@ class EntryDetailView(View, LoginRequiredMixin):
         return render(request, 'Challenge/entry.html', context)
 
 
-class SubmitEntryView(View):
+class SubmitEntryView(View, LoginRequiredMixin):
     def get(self, request, slug, *args, **kwargs):
         entry = get_object_or_404(ChallengeEntry, slug=slug)
         form = SubmitEntryForm()

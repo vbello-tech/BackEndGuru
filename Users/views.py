@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import View, TemplateView
+from django.views.generic import View
 from .forms import CreateProfileForm, NewUserForm, LoginForm
 from .models import UserProfile, User
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.contrib import auth
 from django.contrib.auth import authenticate, update_session_auth_hash
@@ -141,7 +141,7 @@ def handler404(request, exception):
 
 
 def handler500(request):
-    context =  {"<h1>OOPS !!! <br> SEVER ERROR!!! <br> </h1>"}
+    context = {"<h1>OOPS !!! <br> SEVER ERROR!!! <br> </h1>"}
     response = render(request, "Templates/500.html", context)
     response.status_code = 500
     return response

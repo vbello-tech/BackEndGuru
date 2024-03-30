@@ -18,15 +18,10 @@
             </div>
             <div class="grid gap-1">
                 <div class="flex items-center gap-2">
-                    <div class="text-sm font-medium">Difficulty: {{ challenge.difficulty }}</div>
+                    <div class="text-sm font-medium">Difficulty: <a class="text-black font-medium hover:underline" href="{% url 'challenge:level' level=challenge.difficulty %}">{{ challenge.difficulty }}</a></div>
                 </div>
             </div>
-            <div class="grid gap-2">
-                <h3 class="text-lg font-bold">Stack</h3>
-                <div class="grid gap-2 text-sm text-gray-500 dark:text-gray-400">
-                    <p>{{ challenge.stack }}</p>
-                </div>
-            </div>
+
             <div class="grid gap-2">
                 <h3 class="text-lg font-bold">Requirements</h3>
                 <ul class="list-disc list-inside grid gap-2 text-sm text-gray-500 dark:text-gray-400">
