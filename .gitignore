@@ -17,4 +17,5 @@ Templates/account/.DS_Store
 Challenges/migrations/__pycache__/
 Challenges/__pycache__/
 media/
+me.txt
 
