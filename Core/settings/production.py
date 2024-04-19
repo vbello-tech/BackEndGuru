@@ -48,7 +48,7 @@ LOGGING = {
 
 
 # PRODUCTION SETTINGS
-CSRF_TRUSTED_ORIGINS = ['https://backendguru.up.railway.app/']
+CSRF_TRUSTED_ORIGINS = ['https://backendguru.up.railway.app']
 CORS_ORIGIN_ALLOW_ALL = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
