@@ -11,13 +11,18 @@
     <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
 
 
-    <meta content="BACNDGURU is a webapp that helps backend developers hone their skills and become better. The
+    <meta content="BackEndGuru is a webapp that helps backend developers hone their skills and become better. The
         website contains challenges that they can participate in to help them become better at backend engineering." name="description">
     <meta content="" name="keywords">
 
     <style>
         #flash-message {
-            display: none;
+            margin: 5px 40vh;
+            padding: 5%;
+            font-size: 15px;
+        }
+        # flash-message span {
+            margin-left: 20px;
         }
     </style>
 
@@ -26,8 +31,6 @@
 <body>
  <div class="flex flex-col min-h-screen">
 <!------------- nav  ----------->
-
-
         <header class="px-4 lg:px-6 h-14 flex items-center">
             <Link class="flex items-center justify-center" href="#">
               <span class="font-semibold text-lg text-black hidden md:inline">BackEndGuru</span>
@@ -52,21 +55,20 @@
               </a>
                 {% endif %}
             </nav>
+
           </header>
 
-    {% if messages %}
-        {% for message in messages %}
-             <div id="flash-message" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-blue-500 text-white px-4 py-2 rounded shadow">
-                 <span id="close-btn" class="absolute top-1 right-1 cursor-pointer">&times;</span>
-                    {{ message }}
-             </div>
-        {% endfor %}
-    {% endif %}
+            {% if messages %}
+                {% for message in messages %}
+                 <div id="flash-message" class="top-1/2 text-black px-4 py-2 rounded shadow z-40 text-center">
+                     {{ message }}<span id="close-btn" class="absolute top-1 right-1 cursor-pointer">&times;</span>
+                 </div>
+                {% endfor %}
+            {% endif %}
 
   {% block body %}
 
   {% endblock body %}
-
 
 
 <!------------- footer section  ----------->
