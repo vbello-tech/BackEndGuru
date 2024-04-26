@@ -15,17 +15,6 @@
         website contains challenges that they can participate in to help them become better at backend engineering." name="description">
     <meta content="" name="keywords">
 
-    <style>
-        #flash-message {
-            margin: 5px 40vh;
-            padding: 5%;
-            font-size: 15px;
-        }
-        # flash-message span {
-            margin-left: 20px;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -36,21 +25,21 @@
               <span class="font-semibold text-lg text-black hidden md:inline">BackEndGuru</span>
             </Link>
             <nav class="ml-auto flex gap-4 sm:gap-6">
-              <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="{% url 'user:home' %}">
+              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'user:home' %}">
                 Home
               </a>
               <!--a class="text-sm text-black font-medium hover:underline underline-offset-4" href="#">
                 LeaderBoard
               </a-->
-              <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="{% url 'challenge:list' %}">
+              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'challenge:list' %}">
                 Challenges
               </a>
                 {% if user.is_authenticated %}
-             <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="#">
+             <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="#">
                 Your Tasks
               </a>
                 {% else %}
-              <a class="text-sm text-black font-medium hover:underline underline-offset-4" href="{% url 'user:login' %}">
+              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'user:login' %}">
                 Login
               </a>
                 {% endif %}
@@ -61,7 +50,7 @@
             {% if messages %}
                 {% for message in messages %}
                  <div id="flash-message" class="top-1/2 text-black px-4 py-2 rounded shadow z-40 text-center">
-                     {{ message }}<span id="close-btn" class="absolute top-1 right-1 cursor-pointer">&times;</span>
+                     {{ message }}<span id="close-btn" class="absolute  cursor-pointer ml-4 text-lg">&times;</span>
                  </div>
                 {% endfor %}
             {% endif %}
@@ -103,8 +92,8 @@
                     pr-6 pb-0 pl-6 mt-0 mr-0 mb-4 ml-2 font-medium text-white bg-black tracking-wide
                     shadow-md">Subscribe</button>
               </div>
-              <p class="mt-4 mr-0 mb-0 ml-0 text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing
-                  elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minimh.</p>
+              <p class="mt-4 mr-0 mb-0 ml-0 text-sm text-gray-500">Subscribe to get weekly newsletter about backend
+                  development, it's technology and trends.</p>
             </div>
           </div>
           <div class="justify-between pt-5 pr-0 pb-10 pl-0 sm:flex-row flex flex-col border-t border-gray-800">

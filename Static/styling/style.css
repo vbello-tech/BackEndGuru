@@ -2,6 +2,12 @@
   box-sizing: border-box;
 }
 
+#flash-message {
+            margin: 5px 40vh;
+            padding: 5%;
+            font-size: 15px;
+        }
+
 .form-group .form-control {
     border-radius: 10px 10px 10px 10px;
     padding: 5px;
@@ -50,7 +56,7 @@
 }
 
 .center-div{
-    margin: 10vh 20% 20vh 20%;
+    margin: 8vh 20% 20vh 20%;
     border: 2px solid #faf9f8;
     padding: 2%;
     border-radius: 15px;
@@ -137,7 +143,7 @@
 }
 @media (max-width: 768px) and (max-width: 991px){
   .center-div{
-        margin: 5vh 2%;
+        margin: 4vh 2%;
     }
   .center-div button{
         margin-top: 20px;
@@ -148,4 +154,8 @@
   .instr {
     margin: 12vh 5%;
   }
+
+  #flash-message {
+        margin: 5px 10px;
+    }
 }
