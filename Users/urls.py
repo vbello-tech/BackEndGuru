@@ -10,7 +10,7 @@ from .views import (
     LoginView,
     ChangePasswordView,
     LogoutView,
-    signup_view,
+    SignupView,
 )
 
 from django.contrib.auth.views import (
@@ -25,10 +25,10 @@ app_name = "user"
 urlpatterns = [
     path('', home, name="home"),
     path('create-profile/', CreateProfileView.as_view(), name="create_profile"),
-    path('profile/', UserProfileView.as_view(), name="user_profile"),
+    path('profile/', UserProfileView.as_view(), name="profile"),
 
     # authentication 1
-    path('signup/', signup_view, name="signup"),
+    path('signup/', SignupView.as_view(), name="signup"),
     path('login/', LoginView.as_view(), name="login"),
     path('change-password/', ChangePasswordView.as_view(), name="change_password"),
     path('logout/', LogoutView.as_view(), name="logout"),

@@ -12,7 +12,7 @@ from django.core import mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.contrib import messages
-from Challenges.models import Challenge
+from Challenges.models import ChallengeEntry
 
 
 # Create your views here.
@@ -24,23 +24,30 @@ def home(request):
 
 
 # sign up
-def signup_view(request):
-    if request.method == 'POST':
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            subject = 'Subject'
-            html_message = render_to_string('account/signup_email.html', {'context': user.username})
-            plain_message = strip_tags(html_message)
-            mail.send_mail(subject, plain_message, settings.EMAIL_HOST_USER, [user.email], html_message=html_message)
-            return redirect('/')
-    else:
-        form = NewUserForm()
+class SignupView(View):
+    def get(self, *args, **kwargs):
+        if self.request.user:
+            messages.info(self.request, "You already have an account. Start a challenge!")
+            return redirect('challenge:list')
+        else:
+            context = {
+                'form': NewUserForm(self.request.POST)
+            }
+            return render(self.request, 'account/signup.html', context)
 
-    context = {
-        'form': form
-    }
-    return render(request, 'account/signup.html', context)
+    def post(self, *args, **kwargs):
+        if self.request.method == 'POST':
+            form = NewUserForm(self.request.POST)
+            if form.is_valid():
+                user = form.save()
+                subject = 'Subject'
+                html_message = render_to_string('account/signup_email.html', {'context': user.username})
+                plain_message = strip_tags(html_message)
+                mail.send_mail(subject, plain_message, settings.EMAIL_HOST_USER, [user.email],
+                               html_message=html_message)
+                return redirect('/')
+        else:
+            form = NewUserForm()
 
 
 # login
@@ -128,9 +135,11 @@ class CreateProfileView(View, LoginRequiredMixin):
 
 class UserProfileView(View):
     def get(self, request, *args, **kwargs):
-        return render(self.request, 'account/profile.html', {
+        context = {
             'profile': UserProfile.objects.get(user=request.user),
-        })
+            'entry': ChallengeEntry.objects.filter(participant=request.user)
+        }
+        return render(self.request, 'account/profile.html', context)
 
 
 def handler404(request, exception):

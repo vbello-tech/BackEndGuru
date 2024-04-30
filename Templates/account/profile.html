@@ -26,7 +26,7 @@
         <div class="col-md-12">
           <div class="filters-content">
               <div class="row grid">
-                  {% for challenge in user_challenge %}
+                  {% for challenge in entry %}
                   <div class="col-lg-4 col-md-4 all">
                     <div class="product-item">
                       {% if item.image %}<a href="{{ item.get_detail }}"><img src="{{ item.image.url }}" alt=""></a>{% endif %}
