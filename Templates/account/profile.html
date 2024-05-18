@@ -11,7 +11,6 @@
   <h2>complete your profile<a href="#">here</a> </h2>
 {% else %}
 
-  <h1>{{ profile.user }}</h1>
     <div class="products">
     <div class="container">
       <div class="row">
@@ -26,17 +25,7 @@
         <div class="col-md-12">
           <div class="filters-content">
               <div class="row grid">
-                  {% for challenge in entry %}
-                  <div class="col-lg-4 col-md-4 all">
-                    <div class="product-item">
-                      {% if item.image %}<a href="{{ item.get_detail }}"><img src="{{ item.image.url }}" alt=""></a>{% endif %}
-                      <div class="down-content">
-                        <a href="{{ item.get_detail }}"><h4 style="font-weight: bolder;">{{ item.title }}</h4></a>
-                        <p>{{ item.description }}</p>
-                        <span>{{ item.difficulty }}</span>
-                      </div>
-                    </div>
-                  </div>
+                  {% for item in entry %}
                    {% endfor %}
               </div>
           </div>

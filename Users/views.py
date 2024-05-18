@@ -12,7 +12,7 @@ from django.core import mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
 from django.contrib import messages
-from Challenges.models import ChallengeEntry
+from Challenges.models import ChallengeEntry, Challenge
 
 
 # Create your views here.
