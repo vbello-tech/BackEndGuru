@@ -26,6 +26,15 @@
           <div class="filters-content">
               <div class="row grid">
                   {% for item in entry %}
+                  challenge:{{ item.challenge }}<br>
+                  satus: {{ item.completed }}<br>
+                  date submitted: {{ item.datesubmitted }}<br>
+                  language: {{ item.language }}<br>
+                  framework: {{ item.framework }}<br>
+                  database: {{ item.database }}<br>
+                  github: {{ item.github }}<br>
+                  project: {{ item.project }}<br>
+                  <hr>
                    {% endfor %}
               </div>
           </div>
