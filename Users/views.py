@@ -26,13 +26,14 @@ def home(request):
 # sign up
 class SignupView(View):
     def get(self, *args, **kwargs):
-        if self.request.user:
+        if self.request.user.is_authenticated:
             messages.info(self.request, "You already have an account. Start a challenge!")
             return redirect('challenge:list')
         else:
             context = {
                 'form': NewUserForm(self.request.POST)
             }
+            print(self.request.user)
             return render(self.request, 'account/signup.html', context)
 
     def post(self, *args, **kwargs):
