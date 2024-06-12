@@ -18,6 +18,7 @@ from Challenges.models import ChallengeEntry, Challenge
 # Create your views here.
 
 
+# homepage view
 def home(request):
     challenge = Challenge.objects.order_by('-created_date')[:3]
     return render(request, 'home.html', {'challenges': challenge})
@@ -25,6 +26,9 @@ def home(request):
 
 # sign up
 class SignupView(View):
+    """
+    Signup view
+    """
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             messages.info(self.request, "You already have an account. Start a challenge!")
@@ -53,6 +57,9 @@ class SignupView(View):
 
 # login
 class LoginView(View):
+    """
+    Login view
+    """
     def get(self, *args, **kwargs):
         form = LoginForm()
         context = {
@@ -82,6 +89,9 @@ class LoginView(View):
 
 # logout
 class LogoutView(View, LoginRequiredMixin):
+    """
+    Logout view
+    """
     def get(self, *args, **kwargs):
         auth.logout(self.request)
         messages.success(self.request, "Account logout successful.")
@@ -90,6 +100,9 @@ class LogoutView(View, LoginRequiredMixin):
 
 # change password
 class ChangePasswordView(View, LoginRequiredMixin):
+    """
+    Change password View
+    """
     def get(self, *args, **kwargs):
         form = PasswordChangeForm(user=self.request.user)
         context = {
@@ -110,6 +123,9 @@ class ChangePasswordView(View, LoginRequiredMixin):
 
 # create profile
 class CreateProfileView(View, LoginRequiredMixin):
+    """
+    Create password view
+    """
     def get(self, *args, **kwargs):
         form = CreateProfileForm()
         context = {
@@ -135,6 +151,9 @@ class CreateProfileView(View, LoginRequiredMixin):
 
 
 class UserProfileView(View):
+    """
+    View user profile view
+    """
     def get(self, request, *args, **kwargs):
         context = {
             'profile': UserProfile.objects.get(user=request.user),
@@ -143,6 +162,7 @@ class UserProfileView(View):
         return render(self.request, 'account/profile.html', context)
 
 
+# handle 404 error
 def handler404(request, exception):
     context = {"<h1>PAGE NOT FOUND!! ARE YOU SURE YOU ARE NAVIGATING TO THE RIGHT PAGE?</h1>"}
     response = render(request, "Templates/404.html", context)
@@ -150,6 +170,7 @@ def handler404(request, exception):
     return response
 
 
+# handle 500 error
 def handler500(request):
     context = {"<h1>OOPS !!! <br> SEVER ERROR!!! <br> </h1>"}
     response = render(request, "Templates/500.html", context)

@@ -21,6 +21,29 @@ class NewUserForm(UserCreationForm):
         model = User
         fields = ("username", "email", "password1", "password2")
 
+        widgets = {
+            'username': forms.TextInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
+            'email': forms.EmailInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
+            'password1': forms.PasswordInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            ),
+            'password2': forms.PasswordInput(
+                attrs={
+                    'class': 'form-control',
+                }
+            )
+        }
+
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
         user.email = self.cleaned_data["email"]
@@ -28,6 +51,8 @@ class NewUserForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
 
 
 class LoginForm(forms.Form):

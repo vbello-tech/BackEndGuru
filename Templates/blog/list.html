@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+    {% for blog in blogs %}
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+      <a class="block" href="#">
+        <img
+          src="{{ blog.post_image.url }}"
+          alt="Blog Post Image"
+          width="600"
+          height="400"
+          class="w-full h-48 object-cover"
+          style="aspect-ratio: 600 / 400; object-fit: cover;"
+        />
+      </a>
+      <div class="p-6">
+        <a class="block" href="#">
+          <h2 class="text-xl font-bold mb-2 capitalize">{{ blog.title }}</h2>
+        </a>
+        <p class="text-gray-500 mb-4">
+          {{ blog.description }}
+        </p>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-2 text-gray-500">
+            <span>24 comments</span>
+          </div>
+          <a class="text-primary hover:underline" href="{{ blog.get_detail }}">
+            Read more
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+{% endblock %}

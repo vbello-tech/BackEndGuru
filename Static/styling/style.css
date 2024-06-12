@@ -8,11 +8,16 @@
             font-size: 15px;
         }
 
+.form-group {
+    border: 2px solid black;
+}
+
 .form-group .form-control {
     border-radius: 10px 10px 10px 10px;
     padding: 5px;
     border: 2px solid #faf9f8;
     margin: 1%;
+    border: 2px solid #faf9f8;
 }
 
 .form-group input {
