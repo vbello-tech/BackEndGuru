@@ -8,6 +8,7 @@ from django.contrib import messages
 from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required
 
 
 class CreateChallengeView(CreateView, LoginRequiredMixin):
@@ -46,6 +47,7 @@ class ChallengeDetailView(View):
         return render(request, 'Challenge/detail.html', context)
 
 
+@login_required()
 def create_entry(request):
     task = get_object_or_404(Challenge, id=request.POST.get('challenge_id'))
     try:
