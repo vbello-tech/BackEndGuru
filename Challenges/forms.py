@@ -39,6 +39,10 @@ class SubmitEntryForm(forms.Form):
         'class': 'form-control',
         "placeholder": 'The framework used for the project',
     }))
+    database = forms.CharField(required=True, widget=forms.TextInput(attrs={
+        'class': 'form-control',
+        "placeholder": 'The database used for the project',
+    }))
     github = forms.URLField(required=True, widget=forms.TextInput(attrs={
         'class': 'form-control',
         "placeholder": 'Link to challenge github repo',

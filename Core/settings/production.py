@@ -11,6 +11,23 @@ INSTALLED_APPS = THIRD_PARTY_APPS + DJANGO_APPS + PROJECT_APPS + DEPLOYMENT_APPS
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('debug')
 
+# cloudinary api key
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUD_NAME'),
+    'API_KEY': config('API_KEY'),
+    'API_SECRET': config('API_SECRET'),
+}
+
+# storage settings
+STORAGES = {
+    "default": {
+        "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage'
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage"
+    },
+}
+
 # LOGGING TO betterstack.com
 
 better_stack_token = config('better_stack_token')

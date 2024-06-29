@@ -7,6 +7,16 @@ INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('debug')
 
+# storage settings
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
+}
+
 # mail
 EMAIL_HOST = "localhost"
 EMAIL_PORT = 1025

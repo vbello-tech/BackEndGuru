@@ -87,6 +87,9 @@ class SubmitEntryView(View, LoginRequiredMixin):
                 entry.description = form.cleaned_data.get('description')
                 entry.github = form.cleaned_data.get('github')
                 entry.project = form.cleaned_data.get('project')
+                entry.language = form.cleaned_data.get('language')
+                entry.framework = form.cleaned_data.get('framework')
+                entry.database = form.cleaned_data.get('database')
                 entry.completed = True
                 entry.datesubmitted = timezone.now()
                 entry.save()

@@ -1,19 +1,17 @@
 """
 Django settings for Core project.
-
 """
 import os
 import django
+import cloudinary_storage
 from pathlib import Path
 from decouple import config
 
 # fix force_text in django_crispy_forms
-
-
 from django.utils.encoding import force_str
 
 django.utils.encoding.force_text = force_str
-from pathlib import Path
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -56,6 +54,8 @@ THIRD_PARTY_APPS = [
     'crispy_bootstrap4',
     'ckeditor',
     'ckeditor_uploader',
+    'cloudinary_storage',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
