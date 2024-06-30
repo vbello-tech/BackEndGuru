@@ -9,7 +9,10 @@ Core/__pycache__/
 Core/settings/__pycache__/
 Users/__pycache__/
 Users/migrations/__pycache__/
+Blog/__pycache__/
+Blog/migrations/__pycache__/
 .idea/
+staticfiles/
 .DS_Store
 Templates/.DS_Store
 Templates/account/.DS_Store
