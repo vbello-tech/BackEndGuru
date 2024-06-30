@@ -23,9 +23,7 @@ STORAGES = {
     "default": {
         "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage'
     },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
-    },
+
 }
 
 # LOGGING TO betterstack.com
