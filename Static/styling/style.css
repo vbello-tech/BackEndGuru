@@ -3,7 +3,11 @@
 }
 
 header {
-    margin: 5%;
+    margin: 30px 0;
+}
+
+.nav_logo {
+    font-size: 1.8 rem;
 }
 
 #flash-message {
@@ -165,4 +169,11 @@ header {
   .nav_auth {
     display: none;
   }
+  header {
+    margin: 10px 0;
+  }
+
+  .nav_logo {
+        font-size: 1.2 rem;
+   }
 }
