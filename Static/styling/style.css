@@ -158,4 +158,7 @@
   #flash-message {
         margin: 5px 10px;
     }
+  .items-center a, button {
+    display: none;
+  }
 }
