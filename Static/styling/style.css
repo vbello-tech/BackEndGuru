@@ -158,7 +158,7 @@
   #flash-message {
         margin: 5px 10px;
     }
-  .items-center a, button {
+  .gap-6 a, button {
     display: none;
   }
 }
