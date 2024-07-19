@@ -24,7 +24,7 @@
 <div class="flex flex-col min-h-screen">
 <!------------- nav  ----------->
 
-    <header class="bg-white px-4 lg:px-6 h-14" style="padding: 50px auto auto auto">
+    <header class="bg-white px-4 lg:px-6 h-14" >
         <nav class="flex justify-between items-center w-[92%]  mx-auto">
             <div class>
               <span class="font-semibold text-lg text-black md:inline" style="font-size: 1.2rem;">BackEndGuru</span>
@@ -52,11 +52,11 @@
             <div class="flex items-center gap-6">
 
                 {% if user.is_authenticated %}
-                        <a  href="{% url 'user:profile' %}">
+                        <a  href="{% url 'user:profile' %}" class="nav_auth">
                             <img src="{% static 'images/user.png' %}" alt="User Profile" class="rounded-circle" width="50">
                           </a>
                 {% else %}
-                    <button class="bg-[black] text-white px-5 py-2 rounded-full hover:bg-[black]">
+                    <button class="bg-[black] text-white px-5 py-2 rounded-full hover:bg-[black]" class="nav_auth">
                         <a class="text-lg font-medium hover:underline hover:text-white underline-offset-4" href="{% url 'user:login' %}">
                             Login
                           </a>
