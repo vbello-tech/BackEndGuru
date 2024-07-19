@@ -10,7 +10,8 @@
     <link rel="shortcut icon" href="{% static 'images/BackEndGuru.ico' %}" type="image/x-icon">
     <title>{% block title %} {% endblock title %}</title>
     <script src="https://unpkg.com/htmx.org@1.9.4" integrity="sha384-zUfuhFKKZCbHTY6aRR46gxiqszMk5tcHjsVFxnUo8VMus4kHGVdIYVbOYYNlKmHV" crossorigin="anonymous"></script>
-
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 
     <meta content="BackEndGuru is a webapp that helps backend developers hone their skills and become better. The
         website contains challenges that they can participate in to help them become better at backend engineering." name="description">
@@ -19,34 +20,54 @@
 </head>
 
 <body>
- <div class="flex flex-col min-h-screen">
-<!------------- nav  ----------->
-        <header class="px-4 lg:px-6 h-14 flex items-center">
-            <Link class="flex items-center justify-center" href="#">
-              <span class="font-semibold text-lg text-black hidden md:inline">BackEndGuru</span>
-            </Link>
-            <nav class="ml-auto flex gap-4 sm:gap-6">
-              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'user:home' %}">
-                Home
-              </a>
-              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'blog:list' %}">
-                Blog
-              </a>
-              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'challenge:list' %}">
-                Challenges
-              </a>
-                {% if user.is_authenticated %}
-             <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'user:profile' %}">
-                Your Tasks
-              </a>
-                {% else %}
-              <a class="text-lg text-black font-medium hover:underline underline-offset-4" href="{% url 'user:login' %}">
-                Login
-              </a>
-                {% endif %}
-            </nav>
 
-          </header>
+<div class="flex flex-col min-h-screen">
+<!------------- nav  ----------->
+
+    <header class="bg-white">
+        <br>
+        <nav class="flex justify-between items-center w-[92%]  mx-auto">
+            <div>
+              <span class="font-semibold text-lg text-black md:inline" style="font-size: 1.5rem;">BackEndGuru</span>
+            </div>
+            <div
+                class="nav-links duration-500 md:static absolute bg-white md:min-h-fit min-h-[60vh] left-0 top-[-100%] md:w-auto  w-full flex items-center px-5">
+                <ul class="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8">
+                    <li>
+                         <a class="text-lg text-black font-medium hover:underline hover:text-black underline-offset-4" href="{% url 'user:home' %}">
+                            Home
+                          </a>
+                    </li>
+                    <li>
+                        <a class="text-lg text-black font-medium hover:underline hover:text-black underline-offset-4" href="{% url 'blog:list' %}">
+                            Blog
+                          </a>
+                    </li>
+                    <li>
+                        <a class="text-lg text-black font-medium hover:underline hover:text-black underline-offset-4" href="{% url 'challenge:list' %}">
+                            Challenges
+                          </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex items-center gap-6">
+
+                {% if user.is_authenticated %}
+                        <a  href="{% url 'user:profile' %}">
+                            <img src="{% static 'images/user.png' %}" alt="User Profile" class="rounded-circle" width="50">
+                          </a>
+                {% else %}
+                    <button class="bg-[black] text-white px-5 py-2 rounded-full hover:bg-[black]">
+                        <a class="text-lg font-medium hover:underline hover:text-white underline-offset-4" href="{% url 'user:login' %}">
+                            Login
+                          </a>
+                    </button>
+                {% endif %}
+                <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl cursor-pointer md:hidden"></ion-icon>
+            </div>
+
+        </nav>
+    </header>
 
             {% if messages %}
                 {% for message in messages %}
@@ -112,6 +133,8 @@
   </div>
     </div>
 
+
+
     <script>
         const flashMessage = document.getElementById('flash-message');
         const closeButton = document.getElementById('close-btn');
@@ -124,6 +147,16 @@
             flashMessage.style.display = 'none';
         });
     </script>
+
+  <script>
+      // nav bar script
+        const navLinks = document.querySelector('.nav-links')
+        function onToggleMenu(e){
+            e.name = e.name === 'menu' ? 'close' : 'menu'
+            navLinks.classList.toggle('top-[9%]')
+        }
+    </script>
+
 
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
