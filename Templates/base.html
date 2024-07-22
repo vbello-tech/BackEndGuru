@@ -49,14 +49,14 @@
                     </li>
                 </ul>
             </div>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-2">
 
                 {% if user.is_authenticated %}
                         <a  href="{% url 'user:profile' %}" >
                             <img src="{% static 'images/user.png' %}" alt="User Profile" class="rounded-circle" width="50">
                           </a>
                 {% else %}
-                    <button class="bg-[black] text-white px-5 py-2 rounded-full hover:bg-[black]" >
+                    <button class="bg-[black] text-white px-3 py-1 rounded-full hover:bg-[black]" >
                         <a class="text-lg font-medium hover:underline hover:text-white underline-offset-4" href="{% url 'user:login' %}">
                             Login
                           </a>
