@@ -83,11 +83,14 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 
-# MEDIA AND STATIC STORAGE
+# storage settings
 STORAGES = {
- "staticfiles": {
-     "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
- },
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+    },
 }
 
 # Email
