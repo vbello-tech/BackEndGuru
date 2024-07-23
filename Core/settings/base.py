@@ -182,6 +182,7 @@ CKEDITOR_CONFIGS = {
             'div',
             'autolink',
             'codesnippet',
+            'devtools',
         ]),
     }
 }

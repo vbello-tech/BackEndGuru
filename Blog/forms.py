@@ -1,6 +1,6 @@
 from django import forms
 from .models import Blog
-from ckeditor.widgets import CKEditorWidget
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class CreateBlogForm(forms.ModelForm):
@@ -24,7 +24,7 @@ class CreateBlogForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'body': CKEditorWidget(
+            'body': CKEditorUploadingWidget(
                 attrs={
                     'class': 'form-control',
                 }
