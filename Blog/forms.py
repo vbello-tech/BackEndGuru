@@ -1,5 +1,6 @@
 from django import forms
 from .models import Blog
+from ckeditor.widgets import CKEditorWidget
 
 
 class CreateBlogForm(forms.ModelForm):
@@ -13,17 +14,17 @@ class CreateBlogForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'description': forms.EmailInput(
+            'description': forms.TextInput(
                 attrs={
                     'class': 'form-control',
                 }
             ),
-            'post_image': forms.PasswordInput(
+            'post_image': forms.ClearableFileInput(
                 attrs={
                     'class': 'form-control',
                 }
             ),
-            'body': forms.PasswordInput(
+            'body': CKEditorWidget(
                 attrs={
                     'class': 'form-control',
                 }
