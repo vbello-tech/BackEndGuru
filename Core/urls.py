@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('Users.urls', namespace="user")),
     path('challenge/', include("Challenges.urls", namespace="challenge")),
     path('blog/', include("Blog.urls", namespace="blog")),
+    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
 ]
 
 handler404 = 'Users.views.handler404'
