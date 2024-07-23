@@ -5,8 +5,7 @@ from django.db import models
 from django.utils import timezone
 from django.conf import settings
 from django.urls import reverse
-from ckeditor.fields import RichTextField
-
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 # Create your models here.
@@ -20,7 +19,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=200, blank=True, null=True)
     post_image = models.ImageField(blank=False, upload_to="Blog/")
-    body = RichTextField()
+    body = RichTextUploadingField()
     publish_date = models.DateTimeField(default=timezone.now)
     slug = models.SlugField(unique=True, blank=True)
 
