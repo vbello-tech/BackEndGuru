@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.views.generic import CreateView, DetailView, ListView
+from django.shortcuts import render, redirect
+from django.views.generic import CreateView, View, ListView
 from .models import Blog
-from .forms import CreateBlogForm
+from .forms import CreateBlogForm, CommentForm
 from django.urls import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -28,13 +28,29 @@ class CreateBlogView(CreateView, LoginRequiredMixin):
         return super().form_valid(form)
 
 
-class BlogDetailView(DetailView):
+class BlogDetailView(View):
     """
     View for blog detail
     """
-    model = Blog
-    template_name = 'blog/detail.html'
-    context_object_name = "blog"
+    def get(self, request, title, slug, *args, **kwargs):
+        blog = Blog.objects.get(title=title, slug=slug)
+        context = {
+            'form': CommentForm(self.request.POST),
+            'blog': blog
+        }
+        return render(self.request, 'blog/detail.html', context)
+
+    def post(self, request, title, slug, *args, **kwargs):
+        blog = Blog.objects.get(title=title, slug=slug)
+        if request.method == "POST":
+            form = CommentForm(request.POST)
+            if form.is_valid:
+                comment = form.save(commit=False)
+                comment.author = request.user
+                comment.post = blog
+                comment.save()
+                return redirect(blog.get_detail())
+
 
 
 class BlogListView(ListView):
