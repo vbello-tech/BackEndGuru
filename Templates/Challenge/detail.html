@@ -21,14 +21,6 @@
                     <div class="text-sm font-medium">Difficulty: <a class="text-black font-medium hover:underline" href="{% url 'challenge:level' level=challenge.difficulty %}">{{ challenge.difficulty }}</a></div>
                 </div>
             </div>
-            <div class="flex flex-col gap-1 min-[400px]:flex-row">
-                     <form method="post" action="{% url 'challenge:take_entry' %}">
-                        {% csrf_token %}
-                        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary bg-gray-900  hover:bg-primary/90 h-9 rounded-md px-3 w-full min-w-[200px]" name="challenge_id" value="{{ challenge.id }}" type="submit">
-                        Take Challenge</button>
-                    </form>
-                    <div id="message"></div>
-            </div>
             <div class="grid gap-2">
                 <h3 class="text-lg font-bold">Requirements</h3>
                 <ul class="list-disc list-inside grid gap-2 text-sm text-gray-700 dark:text-gray-800">
@@ -38,10 +30,20 @@
                 </ul>
             </div>
             <div class="grid gap-2">
-                <h3 class="text-lg font-bold">Submission</h3>
-                <p class="text-sm text-gray-500 dark:text-gray-800">
-                  Submit your GitHub repository to the leaderboard.
-                </p>
+                <h3 class="text-lg font-bold">How to Participate</h3>
+                <ul class="list-disc list-inside grid gap-2 text-sm text-gray-700 dark:text-gray-800">
+                    <li>Click on Take challenge button below</li>
+                    <li>Go to <b>MY TASK</b> section in your profile to submit the required items after completing the task</li>
+                    <li>Your submission will be added to this challenge's leaderboard</li>
+                </ul>
+                <div class="flex flex-col gap-1 min-[400px]:flex-row">
+                     <form method="post" action="{% url 'challenge:take_entry' %}">
+                        {% csrf_token %}
+                        <button class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary bg-gray-900  hover:bg-primary/90 h-9 rounded-md px-3 w-full min-w-[200px]" name="challenge_id" value="{{ challenge.id }}" type="submit">
+                        Take Challenge</button>
+                    </form>
+                    <div id="message"></div>
+            </div>
             </div>
             <div class="grid gap-2">
                 <h3 class="text-3xl font-bold mb-4">Leaderboard</h3>
