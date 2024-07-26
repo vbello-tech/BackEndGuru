@@ -5,53 +5,75 @@
 {% block body %}
 
 <div class="container">
-  <div class="profile">
+
 
 {% if not profile.user %}
   <h2>complete your profile<a href="#">here</a> </h2>
 {% else %}
 
-    <div class="products">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="filters">
-            <div class="section-title">
-              <p>Your Challenges</p>
-            </div>
-          </div>
-        </div>
 
-        <div class="col-md-12">
-          <div class="filters-content">
-              <div class="row grid">
-                  {% for item in entry %}
-                  challenge:{{ item.challenge }}<br>
-                  satus: {{ item.completed }}<br>
-                  date submitted: {{ item.datesubmitted }}<br>
-                  language: {{ item.language }}<br>
-                  framework: {{ item.framework }}<br>
-                  database: {{ item.database }}<br>
-                  github: {{ item.github }}<br>
-                  project: {{ item.project }}<br>
-                  <hr>
-                   {% endfor %}
-              </div>
-          </div>
-        </div>
-
-
-      </div>
+<!-- Profile Header -->
+<div class="bg-white shadow-md rounded-lg p-6 mb-6">
+  <div class="flex items-center space-x-6">
+    <img class="w-24 h-24 rounded-full" src="https://via.placeholder.com/100" alt="User Profile Picture">
+    <div>
+      <h2 class="text-2xl font-bold">John Doe</h2>
+      <p class="text-gray-600">Backend Developer</p>
+      <p class="mt-2 text-gray-800">Passionate backend developer with a love for solving complex problems and participating in coding challenges.</p>
     </div>
-  </div>
-
-
-
-
-{% endif %}
-
   </div>
 </div>
 
-{% endblock %}
+<div class="container mx-auto p-6 bg-white shadow-md rounded-lg mb-6">
+  <!-- Challenges -->
+  <div class="mb-6">
+    <h3 class="text-xl font-bold mb-4">Challenges</h3>
+    <div class="space-y-4">
 
+{% for item in entry %}
+      <div class="bg-gray-100 p-4 rounded-lg">
+        <a href="{{ item.challenge.get_detail }}" class="text-1xl no-underline text-black font-bold capitalize hover:text-black">
+            <h3 >{{ item.challenge.title }}</h3>
+        </a>
+        <p class="text-gray-800">{{ item.challenge.description }}</p>
+        <p class="mt-2 text-gray-800">Status: <span class="font-bold text-black-900">{% if item.completed %} COMPLETED {% else %} INCOMPLETE {% endif %}</span></p>
+        <div class="mt-2 flex space-x-4">
+          <a href="{{ item.get_entry }}" class="text-white bg-black px-4 py-2 rounded-lg ">View Entry</a>
+            {% if not item.completed %}
+          <a href="{{ item.submit_entry }}" class="text-white bg-black px-4 py-2 rounded-lg ">Complete Challenge</a>
+            {% endif %}
+        </div>
+      </div>
+{% endfor %}
+
+    </div>
+  </div>
+</div>
+
+    <!-- Skills and Achievements >
+<div-- class="container mx-auto p-6 bg-white shadow-md rounded-lg">
+  <div class="mb-6">
+    <h3 class="text-xl font-bold mb-4">Skills</h3>
+    <div class="flex flex-wrap mt-2 gap-2">
+      <span class="bg-blue-500 text-white px-3 py-1 rounded-full text-sm">Node.js</span>
+      <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">Express</span>
+      <span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm">PostgreSQL</span>
+      <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-sm">Redis</span>
+      <span class="bg-purple-500 text-white px-3 py-1 rounded-full text-sm">Microservices</span>
+    </div>
+  </div>
+  <div>
+    <h3 class="text-xl font-bold mb-4">Achievements</h3>
+    <div class="flex flex-wrap mt-2 gap-2">
+      <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">100 Days of Code</span>
+      <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">Hackathon Winner</span>
+      <span class="bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm">Top 10% in CodeWars</span>
+    </div>
+  </div>
+</div-->
+
+{% endif %}
+</div>
+
+
+{% endblock %}

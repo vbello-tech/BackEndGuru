@@ -28,7 +28,7 @@ class SubmitEntryForm(forms.Form):
     description = forms.CharField(required=False, widget=forms.Textarea(attrs={
         'class': 'form-control',
         "placeholder": 'A description of your entry for this challenge. You can type things like your thought process '
-                       'for this challenge and resources that helped you .',
+                       'for this challenge and resources that helped you. (Not required)',
         'rows': 5,
     }))
     language = forms.CharField(required=True, widget=forms.TextInput(attrs={
