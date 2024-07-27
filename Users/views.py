@@ -29,6 +29,7 @@ class SignupView(View):
     """
     Signup view
     """
+
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             messages.info(self.request, "You already have an account. Start a challenge!")
@@ -60,6 +61,7 @@ class LoginView(View):
     """
     Login view
     """
+
     def get(self, *args, **kwargs):
         form = LoginForm()
         context = {
@@ -92,6 +94,7 @@ class LogoutView(View, LoginRequiredMixin):
     """
     Logout view
     """
+
     def get(self, *args, **kwargs):
         auth.logout(self.request)
         messages.success(self.request, "Account logout successful.")
@@ -103,6 +106,7 @@ class ChangePasswordView(View, LoginRequiredMixin):
     """
     Change password View
     """
+
     def get(self, *args, **kwargs):
         form = PasswordChangeForm(user=self.request.user)
         context = {
@@ -126,24 +130,22 @@ class CreateProfileView(View, LoginRequiredMixin):
     """
     Create password view
     """
+
     def get(self, *args, **kwargs):
-        form = CreateProfileForm()
+        profile = get_object_or_404(UserProfile, user=self.request.user)
+        form = CreateProfileForm(self.request.POST, self.request.FILES, instance=profile)
         context = {
             'form': form,
         }
         return render(self.request, 'account/createprofile.html', context)
 
     def post(self, *args, **kwargs):
-        form = CreateProfileForm(self.request.POST, self.request.FILES)
         profile = get_object_or_404(UserProfile, user=self.request.user)
+        form = CreateProfileForm(self.request.POST, self.request.FILES, instance=profile)
         if form.is_valid():
-            profile.bio = form.cleaned_data.get('bio'),
-            profile.image = form.cleaned_data.get('image'),
-            profile.stack = form.cleaned_data.get('stack'),
-            profile.github = form.cleaned_data.get('github'),
-            profile.twitter = form.cleaned_data.get('twitter'),
-            profile.linkedin = form.cleaned_data.get('linkedin'),
-            profile.other = form.cleaned_data.get('other')
+            profile = form.save(commit=False)
+            profile.user = self.request.user
+            profile.save()
             profile.save()
             return redirect(profile.get_profile())
         else:
@@ -154,6 +156,7 @@ class UserProfileView(View):
     """
     View user profile view
     """
+
     def get(self, request, *args, **kwargs):
         context = {
             'profile': UserProfile.objects.get(user=request.user),

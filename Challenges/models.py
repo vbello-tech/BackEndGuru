@@ -5,6 +5,7 @@ import uuid
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from ckeditor_uploader.fields import RichTextUploadingField
 
 Difficulty = [
     ('NEWBIE', 'NEWBIE'),
@@ -24,7 +25,7 @@ class Challenge(models.Model):
     author = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     description = models.TextField()
-    instructions = models.TextField(blank=True, null=True)
+    features = RichTextUploadingField(blank=True, null=True)
     image = models.ImageField(upload_to="Challenge/", blank=True, null=True)
     difficulty = models.CharField(max_length=15, choices=Difficulty, blank=True, null=True)
     created_date = models.DateField(auto_now_add=True)

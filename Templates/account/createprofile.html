@@ -1,18 +1,28 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 {% load crispy_forms_tags %}
+{% load i18n %}
 
-{% block title %} CREATE PROFILE {% endblock %}
+{% block title %} {% trans "Profile" %} {% endblock title %}
+
 
 {% block body %}
+<div class="container">
+  <div class="center-div">
 
-<form method="post" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
 
-    {% csrf_token %}
-    {{ form|crispy }}
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form|crispy }}
 
-    <button type="submit">SAVE...</button>
+            <p class="text-center">
+                <button type="submit" class="btn btn-dark">SUBMIT ...</button>
+            </p>
 
-</form>
+        </form>
+
+  </div>
+</div>
 
 {% endblock %}
 

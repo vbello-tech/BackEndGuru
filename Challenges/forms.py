@@ -1,11 +1,12 @@
 from django import forms
 from .models import Challenge
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
 class CreateChallengeForm(forms.ModelForm):
     class Meta:
         model = Challenge
-        exclude = ("author", "slug", "image", "instructions",)
+        exclude = ("author", "slug", "image",)
 
         widgets = {
             'title': forms.TextInput(
@@ -18,7 +19,14 @@ class CreateChallengeForm(forms.ModelForm):
                 attrs={
                     'class': 'form-control',
                     "placeholder": 'A brief description of the Challenge',
-                    'rows': 5,
+                    'rows': 3,
+                }
+            ),
+            'features': CKEditorUploadingWidget(
+                attrs={
+                    'class': 'form-control',
+                    "placeholder": 'A brief description of the Challenge',
+                    'rows': 3,
                 }
             )
         }

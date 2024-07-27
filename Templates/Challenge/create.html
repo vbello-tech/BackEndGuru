@@ -6,12 +6,15 @@
 {% block body %}
 <div class="container" >
 <div class="center-div">
-    <form method="post" class="form-group" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <p class="text-center">
-        <button type="submit">create...</button>
-        </p>
+     <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media}}
+            <div class="form-group">
+                {{form.as_p}}
+            </div>
+            <p  class="text-center">
+              <button type="submit" class="btn btn-dark">POST...</button>
+            </p>
     </form>
 </div>
 </div>

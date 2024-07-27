@@ -22,18 +22,19 @@
                 </div>
             </div>
             <div class="grid gap-2">
-                <h3 class="text-lg font-bold">Requirements</h3>
-                <ul class="list-disc list-inside grid gap-2 text-sm text-gray-700 dark:text-gray-800">
-                    <li>Code should be submitted as a GitHub repository.</li>
-                    <li>The architecture should be documented using a README file.</li>
-                    <li>DataBase ER Diagram should be submitted</li>
-                </ul>
+                <h3 class="text-lg font-bold">Challenge Features</h3>
+                <p class="list-disc list-inside grid gap-2 text-sm text-gray-700 dark:text-gray-800">
+                {{ challenge.features|safe }}
+                </p>
             </div>
             <div class="grid gap-2">
                 <h3 class="text-lg font-bold">How to Participate</h3>
                 <ul class="list-disc list-inside grid gap-2 text-sm text-gray-700 dark:text-gray-800">
                     <li>Click on Take challenge button below</li>
                     <li>Go to <b>MY TASK</b> section in your profile to submit the required items after completing the task</li>
+                    <li>Code should be submitted as a GitHub repository.</li>
+                    <li>The architecture should be documented using a README file.</li>
+                    <li>DataBase ER Diagram should be submitted</li>
                     <li>Your submission will be added to this challenge's leaderboard</li>
                 </ul>
                 <div class="flex flex-col gap-1 min-[400px]:flex-row">

@@ -81,9 +81,7 @@ class UserProfile(models.Model):
         """
         redirect to profile view page when function is called
         """
-        return reverse("user:user_profile", kwargs={
-            'pk': self.id,
-        })
+        return reverse("user:profile")
 
     def __str__(self):
         return self.user.username

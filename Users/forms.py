@@ -4,14 +4,19 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError
 
 
-class CreateProfileForm(forms.Form):
-    bio = forms.CharField(required=True)
-    image = forms.ImageField(required=False)
-    stack = forms.CharField(required=True)
-    github = forms.URLField(required=True)
-    twitter = forms.URLField(required=False)
-    linkedin = forms.URLField(required=False)
-    other = forms.URLField(required=False)
+class CreateProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        exclude = ("user", "other",)
+
+        widgets = {
+            'bio': forms.Textarea(
+                attrs={
+                    'class': 'form-control',
+                    'rows': 5,
+                }
+            ),
+        }
 
 
 class NewUserForm(UserCreationForm):
@@ -53,8 +58,6 @@ class NewUserForm(UserCreationForm):
         return user
 
 
-
-
 class LoginForm(forms.Form):
     email = forms.EmailField(required=True, widget=forms.TextInput(attrs={
         'placeholder': 'EMAIL ADDRESS',
@@ -63,5 +66,3 @@ class LoginForm(forms.Form):
     password = forms.CharField(required=True, widget=forms.PasswordInput(attrs={
         'placeholder': 'PASSWORD',
     }))
-
-
