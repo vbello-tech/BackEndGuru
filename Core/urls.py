@@ -12,6 +12,7 @@ urlpatterns = [
     path('challenge/', include("Challenges.urls", namespace="challenge")),
     path('blog/', include("Blog.urls", namespace="blog")),
     path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('summernote/', include('django_summernote.urls')),
 ]
 
 handler404 = 'Users.views.handler404'
