@@ -84,7 +84,7 @@ class UserProfile(models.Model):
         return reverse("user:profile")
 
     def __str__(self):
-        return self.user.username
+        return self.user
 
 
 @receiver(post_save, sender=settings.AUTH_USER_MODEL)
