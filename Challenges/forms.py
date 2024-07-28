@@ -1,7 +1,6 @@
 from django import forms
 from .models import Challenge
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from django_summernote.widgets import SummernoteWidget, SummernoteInplaceWidget
+from django_summernote.widgets import SummernoteWidget
 
 
 class CreateChallengeForm(forms.ModelForm):

@@ -1,6 +1,6 @@
 from django import forms
 from .models import Blog, Comment
-from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django_summernote.widgets import SummernoteWidget
 
 
 class CreateBlogForm(forms.ModelForm):
@@ -24,7 +24,7 @@ class CreateBlogForm(forms.ModelForm):
                     'class': 'form-control',
                 }
             ),
-            'body': CKEditorUploadingWidget(
+            'body': SummernoteWidget(
                 attrs={
                     'class': 'form-control',
                 }
