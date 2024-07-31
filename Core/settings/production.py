@@ -21,6 +21,8 @@ DATABASES = {
     }
 }
 
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = False
 
 
 # cloudinary api key
