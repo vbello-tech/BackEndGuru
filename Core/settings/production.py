@@ -35,10 +35,12 @@ CLOUDINARY_STORAGE = {
 # storage settings
 STORAGES = {
     "default": {
-        "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage'
+        "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage',
+        #"BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        #"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
@@ -85,15 +87,6 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
 
-# storage settings
-STORAGES = {
-    "default": {
-        "BACKEND": "django.core.files.storage.FileSystemStorage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
