@@ -24,7 +24,6 @@ DATABASES = {
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-
 # cloudinary api key
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUD_NAME'),
@@ -36,18 +35,17 @@ CLOUDINARY_STORAGE = {
 STORAGES = {
     "default": {
         "BACKEND": 'cloudinary_storage.storage.MediaCloudinaryStorage',
-        #"BACKEND": "django.core.files.storage.FileSystemStorage",
+        # "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-        #"BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+        # "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
     },
 }
 
 # LOGGING TO betterstack.com
 
 better_stack_token = config('better_stack_token')
-
 
 LOGGING = {
     "version": 1,
@@ -79,14 +77,12 @@ LOGGING = {
 
 }
 
-
 # PRODUCTION SETTINGS
 CSRF_TRUSTED_ORIGINS = ['https://backendguru.up.railway.app']
 CORS_ORIGIN_ALLOW_ALL = True
 SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SECURE_BROWSER_XSS_FILTER = True
-
 
 # Email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
