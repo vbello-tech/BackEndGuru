@@ -13,7 +13,7 @@ app_name = "challenge"
 
 urlpatterns = [
     path('create/', CreateChallengeView.as_view(), name="create"),
-    path('all-challenge/', ChallengeListView.as_view(), name="list"),
+    path('all/', ChallengeListView.as_view(), name="list"),
     path('<str:title>/<str:id>/', ChallengeDetailView.as_view(), name="detail"),
     path('take-challenge/', create_entry, name="take_entry"),
     path('entry/detail/<str:slug>/', EntryDetailView.as_view(), name="entry_detail"),
