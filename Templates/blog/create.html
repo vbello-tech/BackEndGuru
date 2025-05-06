@@ -3,8 +3,6 @@
 {% block body %}
 <div class="container">
 
-    <div class="center-div">
-
     <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{ form.media}}
@@ -15,8 +13,6 @@
               <button type="submit" class="btn btn-dark">POST...</button>
             </p>
     </form>
-
-    </div>
 
 </div>
 {% endblock %}
