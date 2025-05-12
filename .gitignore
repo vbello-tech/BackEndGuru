@@ -1,6 +1,7 @@
 # created by virtualenv automatically
 
 venv/
+virt/
 .env
 warning.log
 db.sqlite3
